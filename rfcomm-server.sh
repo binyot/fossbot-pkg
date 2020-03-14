@@ -30,21 +30,17 @@ fi
 
 UUID="0x1101"
 
-if sdptool browse --uuid $UUID local | grep -q $UUID; then
-	echo Serial Port record found
-else
+rfcomm_channel() {
+	echo $()
+}
+
+if ! sdptool browse --uuid $UUID local | grep -q $UUID; then
 	echo No Serial Port records found, adding new SP record
 	sdptool add SP || { echo Failed to add new SP record; exit 1; }
 fi
 
-RFCOMM_FILE="/dev/rfcomm0"
+CHANNEL=$(sdptool browse local | grep -A4 $UUID | awk 'NR == 5 {print $2};')
+echo Serial Port record found with channel $CHANNEL
 
-if [ -e $RFCOMM_FILE ]; then
-	echo File $RFCOMM_FILE already exists
-	exit 1
-fi
-
-echo Launching rfcomm watcher in raw mode for $RFCOMM_FILE
-
-rfcomm --raw watch $RFCOMM_FILE
+# TODO: run fossbot-core with channel $CHANNEL
 
