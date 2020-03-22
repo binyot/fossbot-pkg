@@ -42,5 +42,9 @@ fi
 CHANNEL=$(sdptool browse local | grep -A4 $UUID | awk 'NR == 5 {print $2};')
 echo Serial Port record found with channel $CHANNEL
 
+echo Powering on hci0
+hciconfig hci0 up
+hciconfig hci0 piscan
+
 # TODO: run fossbot-core with channel $CHANNEL
 
