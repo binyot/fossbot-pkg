@@ -23,6 +23,18 @@ Get any debian-based built for arm half-precision target.
 
 [For example, here](https://rcn-ee.com/rootfs/eewiki/minfs/)
 
+## Build kernel
+
+Patch kernel with [this](https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git) or use pre-patched kernel from [here](https://gitlab.com/GuzTech/linux_socfpga).
+
+Create default configuration, then run ```make ARCH=arm menuconfig```
+
+In ```General setup``` uncheck ```Automatically append version information to the version string``` for convenience. In ```Enable the block layer``` check ```Support for large (2TB+) block devices and files```. If you want to use bluetooth, check all bluetooth-related options (you will probably need to check ```HID drivers``` and enable ```User-space I/O driver support for HID subsystem```.
+
+Example ```.config``` can be found in ```/kernel```
+
+Run ```make ARCH=arm LOCALVERSION= zImage``` to build kernel.
+
 ## Build disk image
 
 ```shell
