@@ -121,3 +121,56 @@ unmount rootfs
 
 losetup -d $DEV
 ```
+
+## Configure system
+
+You may want to first configure SSH and network for convenience.
+
+Assuming Debian 10:
+
+Copy or clone contents of this repo, for example to ```/root```.
+
+### In ```/etc/systemd/system/```:
+
+In ```dbus-org.bluez.service``` add ```--compat``` to ```ExecStart``` arguments.
+
+Add ```reset-usb.service``` with the following content and modified paths if needed:
+
+```
+[Unit]
+Description=Reset USB service
+Before=bluetooth.service
+
+[Service]
+ExecStart=/root/scripts/reset-usb.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Add ```rfcomm-server.service``` with the following content and modified paths if needed:
+
+```
+[Unit]
+Description=RFCOMM Server Setup
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+ExecStart=/root/scripts/rfcomm-server.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Execute
+
+```
+systemctl enable reset-usb.service
+systemctl enable rfcomm-server.service
+```
+
+### Kernel modules
+
+You may want to load kernel modules on boot. A simple way to do this is to create a file ```yourmodule.conf``` in ```/lib/modprobe.d``` with the following content: ```install yourmodule insmod /path/to/yourmodule.ko```.
