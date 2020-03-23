@@ -4,3 +4,6 @@
 [submodule "core"]
 	path = core
 	url = https://github.com/binyot/fossbot-core
+[submodule "fpga"]
+	path = fpga
+	url = https://github.com/binyot/fossbot-fpga
