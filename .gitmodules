@@ -1,3 +1,6 @@
 [submodule "kmod"]
 	path = kmod
 	url = https://github.com/binyot/fossbot-kmod
+[submodule "core"]
+	path = core
+	url = https://github.com/binyot/fossbot-core
