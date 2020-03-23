@@ -41,7 +41,7 @@ This will produce kernel object file(s) that can be ```insmod```ed:
 
 ```shell
 cd kmod
-# Change KDIR path to match your kernel root directory, then run
+# Change KDIR path to match your kernel root directory in Makefile, then run
 make
 ```
 
