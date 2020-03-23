@@ -4,6 +4,25 @@ This is a complete fossbot package repo
 
 # How to
 
+## Get cross-compiler
+
+Download latest [Linaro GCC](https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/)
+
+Example:
+```
+LINARO=gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
+wget https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/"$LINARO".tar.xz
+tar -xf "$LINARO".tar.xz
+
+export CROSS_COMPILE=$PWD/"$LINARO"/bin/arm-linux-gnueabihf-
+```
+
+## Get rootfs
+
+Get any debian-based built for arm half-precision target.
+
+[For example, here](https://rcn-ee.com/rootfs/eewiki/minfs/)
+
 ## Build disk image
 
 ```shell
