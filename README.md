@@ -4,6 +4,10 @@ This is a complete fossbot package repo
 
 # How to
 
+## Use git submodules
+
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
 ## Get cross-compiler
 
 Download latest [Linaro GCC](https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/)
