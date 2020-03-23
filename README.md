@@ -35,6 +35,16 @@ Example ```.config``` can be found in ```/kernel```
 
 Run ```make ARCH=arm LOCALVERSION= zImage``` to build kernel.
 
+## Build kernel modules
+
+This will produce kernel object file(s) that can be ```insmod```ed:
+
+```shell
+cd kmod
+# Change KDIR path to match your kernel root directory, then run
+make
+```
+
 ## Build disk image
 
 ```shell
@@ -100,6 +110,9 @@ mkdir rootfs
 mount "$DEV"p2 rootfs
 ROOTFS=debian.tar
 tar -xf ROOTFS -C rootfs && sync
+
+# At this point you can copy anything you need, for example scripts and built kernel modules
+
 unmount rootfs
 
 losetup -d $DEV
