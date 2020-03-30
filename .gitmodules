@@ -1,9 +1,9 @@
 [submodule "kmod"]
 	path = kmod
-	url = https://github.com/binyot/fossbot-kmod
+	url = ../fossbot-kmod
 [submodule "core"]
 	path = core
-	url = https://github.com/binyot/fossbot-core
+	url = ../fossbot-core
 [submodule "fpga"]
 	path = fpga
-	url = https://github.com/binyot/fossbot-fpga
+	url = ../fossbot-fpga
