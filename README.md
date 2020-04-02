@@ -1,6 +1,6 @@
 # fossbot-pkg
 
-This is a complete fossbot package repo
+Complete fossbot project package.
 
 # How to
 
